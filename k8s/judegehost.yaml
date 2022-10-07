@@ -1,0 +1,40 @@
+apiVersion: apps/v1            
+kind: Deployment               
+metadata:               
+  name: judgehost       
+  labels:               
+    app: judgehost      
+spec:                   
+  replicas: 5
+  selector:             
+    matchLabels:        
+      app: judgehost    
+  template:             
+    metadata:           
+      labels:           
+        app: judgehost  
+    spec:               
+      containers:       
+      - name: judgehost 
+        image: domjudge/judgehost:latest         
+        env:
+        - name: DAEMON_ID
+          value: "0"
+        - name: CONTAINER_TIMEZONE
+          value: Asia/Shanghai
+        - name: JUDGEDAEMON_PASSWORD
+          value: judgehost123
+        - name: DOMSERVER_BASEURL
+          value: http://1.13.157.50/
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: cgroup
+          mountPath: /sys/fs/cgroup
+          readOnly: true
+      volumes:
+      - name: cgroup
+        hostPath:
+          path: /sys/fs/cgroup
+ 
+ 

@@ -1,0 +1,49 @@
+apiVersion: apps/v1            
+kind: Deployment               
+metadata:               
+  name: domserver
+  labels:               
+    app: domserver     
+spec:                   
+  replicas: 2
+  selector:             
+    matchLabels:        
+      app: domserver   
+  template:             
+    metadata:           
+      labels:           
+        app: domserver
+    spec:               
+      containers:       
+      - name: domserver 
+        image: domjudge/domserver:latest     
+        env:
+        - name: MYSQL_HOST
+          value: sh-cynosdbmysql-grp-0vwgms1m.sql.tencentcdb.com
+        - name: MYSQL_PORT
+          value: "21113"
+        - name: MYSQL_USER
+          value: domserver
+        - name: MYSQL_DATABASE
+          value: domjudge
+        - name: MYSQL_PASSWORD
+          value: DOMServer123
+        - name: MYSQL_ROOT_PASSWORD
+          value: DOMServer123
+        - name: CONTAINER_TIMEZONE
+          value: Asia/Shanghai
+        livenessProbe:
+          httpGet:
+            path: /api/contests
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 2
+
+        
+ 
+  
+
+
+    

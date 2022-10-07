@@ -5,7 +5,7 @@
 
 ```
 cd DOMServer
-docker build .
+docker build -t domserver .
 docker run -p 80:80 -d {build出来的镜像id}
 ```
 
@@ -28,6 +28,16 @@ docker exec -it domserver cat /opt/domjudge/domserver/etc/restapi.secret
 
 ```
 cd JudgeHost
-docker build .
+docker build -t judgehost .
 docker run --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro  --hostname judgedaemon-0  {build出来的镜像id}
 ```
+
+如果是本机记得加上`--network host`
+
+## 遇到的问题和解决办法
+
+1. 编译日志输出`unable to resolve host judgedaemon-0: Name or service not known`。
+   
+
+
+   
