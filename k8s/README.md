@@ -59,7 +59,7 @@ kubectl create -f judgehost.yaml
 
 ## 注意事项
 
-1. judgehost设置了强制反亲和性，每台物理机器只能部署一个judgehost。
+1. judgehost和domserver均设置了强制反亲和性，每台物理机器只能部署一个judgehost，部署judgehost的机器不会再部署domserver，但是多个domserver可能在同一台服务器。
 2. domserver挂载了图片文件夹，但是没有挂载自定义css和js文件夹，因此自定义css和js可能不生效。
 
 ## 文件说明

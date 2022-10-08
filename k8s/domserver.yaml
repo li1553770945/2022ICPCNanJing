@@ -43,6 +43,16 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 3
           failureThreshold: 2
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - judgehost   
+              topologyKey: kubernetes.io/hostname
       volumes:
         - name: nfs-pvc
           persistentVolumeClaim:
