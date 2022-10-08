@@ -39,5 +39,7 @@ docker run --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro  --hostname judgedae
 1. 编译日志输出`unable to resolve host judgedaemon-0: Name or service not known`。
    
 
+无关紧要，在judgehost的host文件里配置一下应该就行。
+
 
    

@@ -1,0 +1,7 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: statefu-nfs
+  namespace: default
+provisioner: nfs-deploy     #这里的名字要和上面deploy定义的PROVISIONER_NAME一样
+reclaimPolicy: Retain
