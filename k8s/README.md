@@ -57,6 +57,8 @@ kubectl create -f judgehost.yaml
 
 ```
 
+将DOMjudgelogo.svg拷贝到nfs目录的映射出来的路径里面去，一般路径为`/nfs-data-path/default-domserver-claim-pvc-8aa46e55-5f6e-4298-9e23-af7acf0609fc`这种格式。如果不进行此操作domserver的logo显示不出来，不影响正常比赛。
+
 ## 注意事项
 
 1. judgehost和domserver均设置了强制反亲和性，每台物理机器只能部署一个judgehost，部署judgehost的机器不会再部署domserver，但是多个domserver可能在同一台服务器。
