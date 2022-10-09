@@ -9,6 +9,7 @@ spec:
   selector:             
     matchLabels:        
       app: judgehost    
+  serviceName: "judgehost-svc"
   template:             
     metadata:           
       labels:           
