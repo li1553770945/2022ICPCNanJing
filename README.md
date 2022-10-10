@@ -1,4 +1,7 @@
+# 使用Docker或k8s部署domjudge
 
+
+如果有条件更建议使用[k8s部署](./k8s/)，以下内容为使用docker部署。
 ## step1 启动server
 
 首先修改数据库地址、端口、数据库名、root密码、常规账户密码，然后
